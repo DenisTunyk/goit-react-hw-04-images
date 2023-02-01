@@ -21,18 +21,20 @@ export const App = () => {
     setImageLarge(imgLarge);
   };
 
-  const closeModal = () => {
-    setShowModal(prevState => !prevState);
-  };
+  //   const closeModal = () => {
+  //     setShowModal(prevState => !prevState);
+  //   };
 
   useEffect(() => {
     const handleKeyDown = e => {
       if (e.code === 'Escape') {
-        closeModal();
+        setShowModal(prevState => !prevState);
       }
     };
-
     window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
   }, [showModal]);
 
   const loadMore = () => {
