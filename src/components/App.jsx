@@ -25,18 +25,6 @@ export const App = () => {
   //     setShowModal(prevState => !prevState);
   //   };
 
-  useEffect(() => {
-    const handleKeyDown = e => {
-      if (e.code === 'Escape') {
-        setShowModal(prevState => !prevState);
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [showModal]);
-
   const loadMore = () => {
     setPage(prevState => prevState + 1);
   };
@@ -79,7 +67,12 @@ export const App = () => {
       )}
       <Loader isLoader={isLoader} />
       {showModal && (
-        <Modal onClose={toogleModal} img={imgLarge}>
+        <Modal
+          onClose={toogleModal}
+          img={imgLarge}
+          showModal={showModal}
+          setShowModal={setShowModal}
+        >
           {/* {this.props.children} */}
         </Modal>
       )}
