@@ -21,10 +21,14 @@ export const App = () => {
     setImageLarge(imgLarge);
   };
 
+  const closeModal = () => {
+    setShowModal(prevState => !prevState);
+  };
+
   useEffect(() => {
     const handleKeyDown = e => {
       if (e.code === 'Escape') {
-        toogleModal();
+        closeModal();
       }
     };
 
